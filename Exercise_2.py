@@ -1,39 +1,31 @@
-# Exercise 2 - Faulty Calculator
-# 45 * 3 = 555, 56+9 = 77, 56/6 = 4
-# Design a calculator which will correctly solve all the problems except
-# the following ones:
-# 45 * 3 = 555, 56+9 = 77, 56/6 = 4
-# Your program should take operator  and the two numbers as input from the user
-# and then return the result
-#
+from tkinter import *
 
-print("Enter 1st Number")
-num1 = int(input())
-print('Enter 2nd Number')
-num2 = int(input())
-print('so What you Want?'+'+,-,/,%,*')
-num3 =input()
+root = Tk()
+root.geometry("400x200")
 
-if num1 ==45 and num2==3 and num3=='*':
-    print("555")
-elif num1 == 56 and num2 == 9 and num3 == '+':
-        print("77")
-elif num1 == 56 and num2 == 6 and num3 == '/':
-        print("4")
-elif num3=='*' :
-    num4=num1*num2
-    print(num4)
-elif num3 == '+':
-    plus=num2+num1
-    print(plus)
-elif num3 == '/':
-    Dev=num2/num1
-    print(Dev)
-elif num3 == '-':
-    Dev=num2-num1
-    print(Dev)
-elif num3 == '%':
-    percent=num2%num1
-    print(percent)
-else:
-    print("Error! Please check your input")
+# properties function
+def resizer() :
+     width  = width_value.get()
+     height = height_value.get()
+     root.geometry(f"{width}x{height}")
+
+root.title("Window Resizer by Sam Rider" )
+Label(text = "Window Resizer " , font = "comicsansms 11 bold ", fg = "red", pady = 20).grid(column = 2)
+
+# Labels and grid
+Label(root , text = "Width : ",font = "comicsansms 11" ).grid(row = 1 , column = 1)
+Label(root , text = "Height : ",font = "comicsansms 11" ).grid(row = 2 , column = 1)
+
+# Input values
+width_value = StringVar()
+height_value = StringVar()
+
+# Entry values
+width_entry = Entry(root , textvariable = width_value).grid(row = 1 , column = 2)
+height_entry = Entry(root , textvariable = height_value).grid(row =2, column = 2)
+
+# Button
+Button(text = "APPLY" , command = resizer , pady = 2 , font = "comicsans 11 bold").grid(column = 2)
+
+# final line
+root.mainloop()
